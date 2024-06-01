@@ -7,8 +7,12 @@ export default {
   theme: {
     extend: {
       colors:{
-        'color-1':'#ee6c4d',
-        'color-2':'#003554'
+        'color-1':'#023047',
+        'color-2':'#ffbc42'
+      },
+      fontFamily:{
+        'font-1':'Roboto',
+        'font-2':"Inter"
       }
     },
   },
