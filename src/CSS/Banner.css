@@ -1,0 +1,75 @@
+
+  .swiper {
+    width: 100%;
+    height: 100%;
+  }
+  
+  .swiper-slide {
+    text-align: center;
+    font-size: 18px;
+    background: #fff;
+  
+    /* Center slide text vertically */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .swiper-slide img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  .autoplay-progress {
+    position: absolute;
+    right: 16px;
+    bottom: 16px;
+    z-index: 10;
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    color: var(--swiper-theme-color);
+  }
+  
+  .autoplay-progress svg {
+    --progress: 0;
+    position: absolute;
+    left: 0;
+    top: 0px;
+    z-index: 10;
+    width: 100%;
+    height: 100%;
+    stroke-width: 4px;
+    stroke: var(--swiper-theme-color);
+    fill: none;
+    stroke-dashoffset: calc(125.6px * (1 - var(--progress)));
+    stroke-dasharray: 125.6;
+    transform: rotate(-90deg);
+  }
+  .slide1{
+    background-image: url('https://i.ibb.co/ysb4yq1/bgparallax-03-dark.jpg');
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+  .slide2{
+    background-image: url('https://i.ibb.co/ZRjdn66/bgparallax-02-dark.jpg');
+    background-repeat: no-repeat;
+    background-position:left center;
+  }
+  .slide3{
+    background-image: url('https://i.ibb.co/44k9rz8/bgparallax-01-dark.jpg');
+    background-repeat: no-repeat;
+    background-position:right center;
+  }
+  .slide4{
+    background-image: url('https://i.ibb.co/7J8LQJK/img-02-6.jpg');
+    background-repeat: no-repeat;
+    background-position: center;
+  
+  }
+  
