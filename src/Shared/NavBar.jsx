@@ -7,6 +7,7 @@ const NavBar = () => {
     <li><NavLink to='/' className={({isActive})=>isActive?'font-semibold text-[#ffbc42] ':'font-semibold text-white'}>Blogs</NavLink></li>
     <li><NavLink to='/' className={({isActive})=>isActive?'font-semibold text-[#ffbc42] ':'font-semibold text-white'}>About Us</NavLink></li>
     <li><NavLink to='/' className={({isActive})=>isActive?'font-semibold text-[#ffbc42] ':'font-semibold text-white'}>Contact Us</NavLink></li>
+    <li><NavLink to='/' className={({isActive})=>isActive?'font-semibold text-[#ffbc42] ':'font-semibold text-white'}>Login</NavLink></li>
     </>
     return (
         <div>
@@ -23,14 +24,11 @@ const NavBar = () => {
     <a className="btn btn-ghost text-2xl font-font-2 text-white"><span><img className='w-10' src={logo} alt="" /></span>GlobeGazer</a>
   </div>
   <div className="navbar-end hidden lg:flex">
-    <ul className="flex gap-10 menu-horizontal px-1">
+    <ul className="flex gap-6 menu-horizontal px-1">
       {navOption}
+       
     </ul>
-    <div>
-        <ul className='ms-5 me-1'>
-            <li><NavLink>Login</NavLink></li>
-        </ul>
-    </div>
+    
   </div>
 
 </div>

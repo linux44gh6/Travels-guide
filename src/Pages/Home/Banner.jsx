@@ -1,13 +1,11 @@
 import { Swiper, SwiperSlide } from 'swiper/react';
+// eslint-disable-next-line no-unused-vars
 import React, { useRef, useState } from 'react';
-// Import Swiper styles
 import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
-
 import '../../CSS/Banner.css';
 
-// import required modules
 import { Autoplay, Pagination, Navigation } from 'swiper/modules';
 const Banner = () => {
     const progressCircle = useRef(null);
