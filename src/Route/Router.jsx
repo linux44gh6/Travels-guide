@@ -4,6 +4,7 @@ import {
   } from "react-router-dom";
 import Root from "../MaiLayOut/Root";
 import Home from "../Pages/Home/Home";
+import AllPackages from "../Components/AllPackages/AllPackages";
 
    const router = createBrowserRouter([
   {
@@ -13,6 +14,10 @@ import Home from "../Pages/Home/Home";
       {
         index:true,
         element:<Home></Home>
+      },
+      {
+        path:'/allPackages',
+        element:<AllPackages></AllPackages>
       }
     ]
   },

@@ -5,15 +5,15 @@ const Card = ({item}) => {
    const {trip_title,image1,price,tour_type}=item
     return (
         <div>
-           <div className="rounded-md shadow-md sm:w-96 dark:bg-gray-50 dark:text-gray-800">
+           <div className="rounded-md shadow-md group  dark:bg-gray-50 dark:text-gray-800">
 	
-	<img src={image1} alt="" className="object-cover object-center w-full h-72 dark:bg-gray-500" />
+	<img src={image1} alt="" className="object-cover group-hover:scale-110 transition ease-in-out duration-300 object-center w-full h-72 dark:bg-gray-500" />
 	<div className="p-3 bg-color-1 text-white">
 		<div className="flex  justify-between">
 			<div className="flex items-center space-x-3">
 				<h1 className="text-xl font-semibold font-font-1">{trip_title}</h1>
 			</div>
-			<button type="button" title="Bookmark post" className="flex justify-center">
+			<button type="button" title="Bookmark post" className="flex justify-center items-center">
 				<FaHeart className="text-3xl hover:scale-110 transition hover:text-color-2"></FaHeart>
 			</button>
 		</div>
@@ -25,7 +25,7 @@ const Card = ({item}) => {
 			</div>
 		</div>
 		<div className="w-full">
-       <button className="btn w-full bg-color-1 text-white hover:bg-color-1 capitalize">view Package</button>
+       <button className="btn w-full bg-color-1 rounded-none text-white hover:bg-color-1 capitalize">view Package</button>
 		</div>
 	</div>
 </div>
