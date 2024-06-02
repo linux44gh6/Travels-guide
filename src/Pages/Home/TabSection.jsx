@@ -10,18 +10,11 @@ import { Pagination, Navigation } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
-import { useQuery } from '@tanstack/react-query';
-import axios from 'axios';
 import GuideCard from '../../Components/Guide/GuideCard';
+import useGuide from '../../Hooks/useGuide';
 const TabSection = () => {
-    const {data:guides=[]}=useQuery({queryKey:['guide'],
-    queryFn:async()=>{
-        const res=await axios.get(`${import.meta.env.VITE_BASE_URL}/guides`)
-       return res.data
-    }})
-    console.log(guides);
+    const [guides]=useGuide()
     const [places]=useAxiosPublic()
-    console.log(places);
     return (
         <div className=' w-full lg:px-'>
              <Tabs>
