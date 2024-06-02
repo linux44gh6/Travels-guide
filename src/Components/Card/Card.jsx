@@ -1,4 +1,4 @@
-
+import PropTypes from 'prop-types'
 import { FaHeart } from "react-icons/fa";
 import { GiHiking } from "react-icons/gi";
 const Card = ({item}) => {
@@ -33,4 +33,8 @@ const Card = ({item}) => {
     );
 };
 
+ Card.propTypes={
+    item:PropTypes.object
+ }
+ 
 export default Card;

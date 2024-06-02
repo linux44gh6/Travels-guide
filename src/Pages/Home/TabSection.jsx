@@ -3,12 +3,29 @@ import 'react-tabs/style/react-tabs.css';
 import useAxiosPublic from '../../Hooks/useAxiosPublic';
 import Card from '../../Components/Card/Card';
 import { NavLink } from 'react-router-dom';
+import '../../CSS/Guide.css'
+import React, { useEffect, useRef, useState } from 'react';
 
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Pagination, Navigation } from 'swiper/modules';
+// Import Swiper styles
+import 'swiper/css';
+import 'swiper/css/pagination';
+import 'swiper/css/navigation';
+import { useQuery } from '@tanstack/react-query';
+import axios from 'axios';
+import GuideCard from '../../Components/Guide/GuideCard';
 const TabSection = () => {
+    const {data:guides=[]}=useQuery({queryKey:['guide'],
+    queryFn:async()=>{
+        const res=await axios.get(`${import.meta.env.VITE_BASE_URL}/guides`)
+       return res.data
+    }})
+    console.log(guides);
     const [places]=useAxiosPublic()
     console.log(places);
     return (
-        <div className=' w-full lg:px-10'>
+        <div className=' w-full lg:px-'>
              <Tabs>
     <TabList className='text-center mb-5  border-b border-gray-400'>
       <Tab><span className='font-font-2 text-2xl font-semibold text-color-1'>Overview</span></Tab>
@@ -21,7 +38,7 @@ const TabSection = () => {
       <iframe className="w-full aspect-video" src="https://www.youtube.com/embed/Cn4G2lZ_g2I?si=fbQaFs5qol8-BLnb"></iframe>
       </div>
     </TabPanel>
-    <TabPanel className='bg-color-'>
+    <TabPanel className='lg:px-10'>
         <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3'>
             {
                 places.slice(0,3).map(item=><Card
@@ -44,7 +61,31 @@ const TabSection = () => {
             </div>
     </TabPanel>
     <TabPanel>
-      <h2>Any content 23</h2>
+      <div className='guide h-[100vh] w-full'>
+    <div className='px-10 pt-20'>
+    <Swiper
+        slidesPerView={1}
+        spaceBetween={59}
+        loop={true}
+        pagination={{
+          clickable: true,
+        }}
+        navigation={true}
+        modules={[Pagination, Navigation]}
+        className="mySwiper"
+      >
+        <div className=''>
+        {
+            guides.map(item=><SwiperSlide key={item._id}>
+                <GuideCard
+                item={item}
+                ></GuideCard>
+            </SwiperSlide>)
+        }
+        </div>
+      </Swiper>
+    </div>
+      </div>
     </TabPanel>
   </Tabs>
         </div>
