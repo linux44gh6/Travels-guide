@@ -1,10 +1,10 @@
+import axios from "axios";
 
+const axiosSecure=axios.create({
+    baseURL:`${import.meta.env.VITE_BASE_URL}`
+})
 const useAxiosSecure = () => {
-    return (
-        <div>
-            
-        </div>
-    );
+    return axiosSecure  
 };
 
 export default useAxiosSecure;

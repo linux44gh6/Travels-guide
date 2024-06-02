@@ -1,11 +1,12 @@
 import PropTypes from 'prop-types'
 import { FaHeart } from "react-icons/fa";
 import { GiHiking } from "react-icons/gi";
+import { NavLink } from 'react-router-dom';
 const Card = ({item}) => {
    const {trip_title,image1,price,tour_type}=item
     return (
         <div>
-           <div className="rounded-md shadow-md group  dark:bg-gray-50 dark:text-gray-800">
+           <div className="rounded-md shadow-md group dark:bg-gray-50 dark:text-gray-800">
 	
 	<img src={image1} alt="" className="object-cover group-hover:scale-110 transition ease-in-out duration-300 object-center w-full h-72 dark:bg-gray-500" />
 	<div className="p-3 bg-color-1 text-white">
@@ -25,7 +26,10 @@ const Card = ({item}) => {
 			</div>
 		</div>
 		<div className="w-full">
-       <button className="btn w-full bg-color-1 rounded-none text-white hover:bg-color-1 capitalize">view Package</button>
+			<NavLink to={`/details/${item._id}`}>
+			<button className="btn w-full bg-color-1 rounded-none text-white hover:bg-color-1 capitalize">view Package</button>
+			</NavLink>
+    
 		</div>
 	</div>
 </div>
