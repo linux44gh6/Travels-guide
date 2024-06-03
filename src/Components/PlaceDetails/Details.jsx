@@ -1,8 +1,9 @@
 import { useLoaderData } from "react-router-dom";
 import TourPlan from "../TourPlan/TourPlan";
 import useGuide from "../../Hooks/useGuide";
+// import GuideTable from '../../Components/Guide/GuideTable'
 import GuideCard from "../Guide/GuideCard";
-
+import BookingForm from "../BookingForm/BookingForm";
 const Details = () => {
     const place=useLoaderData()
     const [guides]=useGuide()
@@ -23,11 +24,11 @@ const Details = () => {
             </div>
            <div className="lg:px-3">
            <div >
-            <h1 className="text-4xl font-font-1 capitalize font-extrabold text-center">About the place</h1>
-            <p className="text-lg font-semibold text-gray-600 text-center">{about}</p>
+            <h1 className="text-4xl font-font-1 capitalize font-extrabold ">About the place</h1>
+            <p className="text-lg font-semibold text-gray-600 ">{about}</p>
             </div>
-            <div className="mt-10">
-                <h1 className="text-4xl font-font-1 capitalize font-extrabold text-center">Our Tour Plan</h1>
+            <div className="mt-20">
+                <h1 className="text-4xl font-font-1 capitalize font-extrabold ">Our Tour Plan</h1>
                     <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3 gap-">
                         {
                             tour_plan.map((plan)=><TourPlan
@@ -39,16 +40,21 @@ const Details = () => {
                     </div>
             </div>
 
-            <div className="mt-10">
-                <h1 className="text-4xl font-font-1 capitalize font-extrabold text-center">Our Guides</h1>
-                <div className="grid grid-cols-1 md:grid-cols-2 mt-5 gap-5 lg:grid-cols-3">
-                {
-        guides.map(item=><GuideCard
-        key={item._id}
-        item={item}
-        ></GuideCard>)
-     }
+            <div className="mt-20">
+                <h1 className="text-4xl font-font-1 capitalize font-extrabold">Our Guides</h1>
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mt-10">
+                            {
+                                guides.map(item=><GuideCard
+                                key={item._id}
+                                item={item}
+                                ></GuideCard>)
+                            }
                 </div>
+            </div>
+            
+            <div className="mt-20">
+                <h1 className="text-center text-4xl font-font-1 font-extrabold border-b border-gray-300">Book Now</h1>
+                <BookingForm></BookingForm>
             </div>
            </div>
         </div>

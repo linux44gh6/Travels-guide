@@ -1,20 +1,22 @@
 
-const GuideTable = () => {
+const GuideTable = ({item}) => {
+  const {image,name,}=item
     return (
-        <div>
-              <tr>
+              <tr className="">
         <td>
           <div className="flex items-center gap-3">
             <div className="avatar">
               <div className="mask mask-squircle w-12 h-12">
-                <img src="https://img.daisyui.com/tailwind-css-component-profile-2@56w.png" alt="Avatar Tailwind CSS Component" />
+                <img src={image} alt="Avatar Tailwind CSS Component" />
               </div>
             </div>
-            <div>
-              <div className="font-bold ">Hart Hagerty</div>
+          </div>
+        </td>
+        <td>
+        <div>
+              <div className="font-bold ">{name}</div>
               
             </div>
-          </div>
         </td>
         <td>
           <span className="badge badge-ghost  text-center font-semibold  ">Desktop Support Technician</span>
@@ -24,8 +26,33 @@ const GuideTable = () => {
           <button className="btn btn-ghost rounded-none hover:bg-color-1 hover:text-white ">Book Now</button>
         </th>
       </tr>
-        </div>
+        
     );
 };
 
 export default GuideTable;
+
+
+
+//  <div className="overflow-x-auto">
+// <table className="table">
+//   {/* head */}
+//   <thead className="bg-color-1 text-white text-xl font-font-1  z-20  sticky">
+//     <tr>
+//       <th>Photo</th>
+//       <th>Name</th>
+//       <th>Specialty</th>
+//       <th>Booking</th>
+//     </tr>
+//   </thead>
+//   <tbody>
+//     {
+//       guides.map(item=><GuideTable
+//       key={item._id}
+//       item={item}
+//       ></GuideTable>)
+//    }
+//   </tbody>
+
+// </table>
+// </div> 
