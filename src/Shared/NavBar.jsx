@@ -1,13 +1,31 @@
-import { NavLink } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import logo from '../assets/assistant-svgrepo-com (1).svg'
+import { useContext } from 'react';
+import { AuthContext } from '../AuthProvider/AuthProvider';
 const NavBar = () => {
+  const {user}=useContext(AuthContext)
     const navOption=<>
     <li><NavLink to='/' className={({isActive})=>isActive?'font-semibold text-[#ffbc42] ':'font-semibold text-white'}>Home</NavLink></li>
     <li><NavLink to='/' className={({isActive})=>isActive?'font-semibold text-[#ffbc42] ':'font-semibold text-white'}>Community</NavLink></li>
     <li><NavLink to='/' className={({isActive})=>isActive?'font-semibold text-[#ffbc42] ':'font-semibold text-white'}>Blogs</NavLink></li>
     <li><NavLink to='/' className={({isActive})=>isActive?'font-semibold text-[#ffbc42] ':'font-semibold text-white'}>About Us</NavLink></li>
     <li><NavLink to='/' className={({isActive})=>isActive?'font-semibold text-[#ffbc42] ':'font-semibold text-white'}>Contact Us</NavLink></li>
-    <li><NavLink to='/login' className={({isActive})=>isActive?'font-semibold text-[#ffbc42] ':'font-semibold text-white'}>Login</NavLink></li>
+   {user?<div className="dropdown dropdown-bottom dropdown-end">
+  <div tabIndex={0} role="button" className=" m-1">
+    <img className=' rounded-full border border-white p-1' src={user?.photoURL} alt="" />
+  </div>
+  <ul tabIndex={0} className="dropdown-content z-[1]  menu p-2 shadow bg-color-1 bg-opacity-50 text-white rounded-sm mt-5 w-52  transition ease-in-out duration-900">
+    <li><Link className='text-lg hover:border border-white font-semibold'>Dashboard</Link></li>
+    <li><Link className='text-lg hover:border border-white font-semibold'>Log Out</Link></li>
+  </ul>
+</div>: 
+   
+   <div className='flex'>
+    <li><NavLink to='/login' className={({isActive})=>isActive?'font-semibold text-[#ffbc42] ':'font-semibold text-white'}>Login</NavLink></li><span className='text-white'>/</span>
+    <li><NavLink to='/register' className={({isActive})=>isActive?'font-semibold text-[#ffbc42] ':'font-semibold text-white'}>Register</NavLink></li>
+    </div>
+
+   }
     </>
     return (
         <div>
@@ -24,7 +42,7 @@ const NavBar = () => {
     <a className="btn btn-ghost text-2xl font-font-2 text-white"><span><img className='w-10' src={logo} alt="" /></span>GlobeGazer</a>
   </div>
   <div className="navbar-end hidden lg:flex">
-    <ul className="flex gap-6 menu-horizontal px-1">
+    <ul className="flex items-center gap-6 menu-horizontal px-1">
       {navOption}
        
     </ul>
