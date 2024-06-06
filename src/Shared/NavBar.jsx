@@ -28,7 +28,7 @@ const NavBar = () => {
     <img className=' rounded-full border border-white p-1' src={user?.photoURL} alt="" />
   </div>
   <ul tabIndex={0} className="dropdown-content z-[1]  menu p-2 shadow bg-color-1 bg-opacity-50 text-white rounded-sm mt-5 w-52  transition ease-in-out duration-900">
-    <li><Link className='text-lg hover:border border-white font-semibold'>Dashboard</Link></li>
+    <li><Link to='/dashboard' className='text-lg hover:border border-white font-semibold'>Dashboard</Link></li>
     <li><Link className='text-lg hover:border border-white font-semibold' onClick={handleToLogOut}>Log Out</Link></li>
   </ul>
 </div>: 

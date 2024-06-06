@@ -9,11 +9,15 @@ import Details from "../Components/PlaceDetails/Details";
 import Login from "../Pages/Login/Login";
 import Register from "../Pages/Register/Register";
 import GuideDetails from "../Pages/GuideDetails/GuideDetails";
+import DashboardLayout from "../MaiLayOut/DashboardLayout/DashboardLayout";
+import Error from "../Components/ErrorElement/Error";
+import UserProfile from "../Pages/Dashboard/UserProfile/UserProfile";
 
    const router = createBrowserRouter([
   {
     path: "/",
     element:<Root></Root>,
+    errorElement:<Error></Error>,
     children:[
       {
         index:true,
@@ -43,6 +47,18 @@ import GuideDetails from "../Pages/GuideDetails/GuideDetails";
       }
     ]
   },
+  {
+    path:'/dashboard',
+    element:<DashboardLayout></DashboardLayout>,
+    errorElement:<Error></Error>,
+    children:[
+        {
+          index:true,
+          element:<UserProfile></UserProfile>
+        }
+    ]
+    
+  }
 ]);
 
 export default router;
