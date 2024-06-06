@@ -2,8 +2,21 @@ import { Link, NavLink } from 'react-router-dom';
 import logo from '../assets/assistant-svgrepo-com (1).svg'
 import { useContext } from 'react';
 import { AuthContext } from '../AuthProvider/AuthProvider';
+import Swal from 'sweetalert2';
 const NavBar = () => {
-  const {user}=useContext(AuthContext)
+  const {user,logOut}=useContext(AuthContext)
+  const handleToLogOut=()=>{
+    logOut()
+    .then(()=>{
+      Swal.fire({
+        position: "top-center",
+        icon: "success",
+        title: "LogOut successful",
+        showConfirmButton: false,
+        timer: 1500
+      });
+    })
+  }
     const navOption=<>
     <li><NavLink to='/' className={({isActive})=>isActive?'font-semibold text-[#ffbc42] ':'font-semibold text-white'}>Home</NavLink></li>
     <li><NavLink to='/' className={({isActive})=>isActive?'font-semibold text-[#ffbc42] ':'font-semibold text-white'}>Community</NavLink></li>
@@ -16,7 +29,7 @@ const NavBar = () => {
   </div>
   <ul tabIndex={0} className="dropdown-content z-[1]  menu p-2 shadow bg-color-1 bg-opacity-50 text-white rounded-sm mt-5 w-52  transition ease-in-out duration-900">
     <li><Link className='text-lg hover:border border-white font-semibold'>Dashboard</Link></li>
-    <li><Link className='text-lg hover:border border-white font-semibold'>Log Out</Link></li>
+    <li><Link className='text-lg hover:border border-white font-semibold' onClick={handleToLogOut}>Log Out</Link></li>
   </ul>
 </div>: 
    

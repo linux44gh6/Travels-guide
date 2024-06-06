@@ -3,6 +3,8 @@ import bgVideo from '../../assets/3571264-uhd_3840_2160_30fps.mp4'
 import { useContext } from 'react';
 import { AuthContext } from '../../AuthProvider/AuthProvider';
 import Swal from 'sweetalert2';
+import facebook from '../../assets/100242_facebook_icon-removebg-preview.png'
+import google from '../../assets/google.svg'
 const Login = () => {
     const {singIn}=useContext(AuthContext)
     const handleToLogin=e=>{
@@ -56,9 +58,9 @@ const Login = () => {
           <button className="btn bg-color-1 text-white hover:text-black rounded-none">Login</button>
         </div>
         <div className="divider text-white">OR</div>
-        <div className='flex flex-col gap-3'>
-            <button className='w-full btn rounded-none'>Google</button>
-            <button className='w-full btn rounded-none'>FaceBook</button>
+        <div className='flex flex- gap-3'>
+            <button className='w-1/2 btn rounded-none '><img className='w-20 ' src={google} alt="" /></button>
+            <button className=' w-1/2 btn rounded-none'><img className='w-20 -mt-4' src={facebook} alt="" /></button>
         </div>
         <p className='text-white'>New here?<NavLink to='/register' className='text-xl underline'>Create Account</NavLink></p>
       </form>

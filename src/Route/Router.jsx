@@ -8,6 +8,7 @@ import AllPackages from "../Components/AllPackages/AllPackages";
 import Details from "../Components/PlaceDetails/Details";
 import Login from "../Pages/Login/Login";
 import Register from "../Pages/Register/Register";
+import GuideDetails from "../Pages/GuideDetails/GuideDetails";
 
    const router = createBrowserRouter([
   {
@@ -34,6 +35,11 @@ import Register from "../Pages/Register/Register";
       {
         path:'/register',
         element:<Register></Register>
+      },
+      {
+        path:'/guideDetails/:id',
+        element:<GuideDetails></GuideDetails>,
+        loader:({params})=>fetch(`${import.meta.env.VITE_BASE_URL}/guide/${params.id}`)
       }
     ]
   },

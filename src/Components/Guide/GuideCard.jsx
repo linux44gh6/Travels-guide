@@ -1,7 +1,8 @@
 import PropTypes from 'prop-types'
 import { FaFacebook, FaInstagram, FaTwitter } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
 const GuideCard = ({item}) => {
-    const {image,name,about}=item
+    const {image,name,about,_id}=item
     console.log(item);
     return (
         <div className="group">
@@ -18,7 +19,9 @@ const GuideCard = ({item}) => {
     </div>
     <p className='text-left font-semibold text-gray-500'>{about}</p>
     <div className="card-actions justify-en">
-      <button className="btn border-color-1 rounded-none hover:text-white hover:bg-color-1"> Details</button>
+    <Link to={`/guideDetails/${_id}`}>
+    <button className="btn border-color-1 rounded-none hover:text-white hover:bg-color-1"> Details</button>
+    </Link>
     </div>
   </div>
 </div>

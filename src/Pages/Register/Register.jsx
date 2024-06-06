@@ -17,7 +17,7 @@ const Register = () => {
     //     }
 
         createUser(email,password)
-        .then(res=>{
+        .then(()=>{
                 updateUserProfile(name,photoURL)
                 .then(()=>{
                     Swal.fire({
