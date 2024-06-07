@@ -2,7 +2,22 @@ import PropTypes from 'prop-types'
 import { FaHeart } from "react-icons/fa";
 import { GiHiking } from "react-icons/gi";
 import { NavLink } from 'react-router-dom';
+import useAxiosSecure from '../../Hooks/useAxiosSecure';
+import Swal from 'sweetalert2';
 const Card = ({item}) => {
+	const axiosSecure=useAxiosSecure()
+	const handleToAdd=async()=>{
+		await axiosSecure.post('/wishList',item)
+		.then(()=>{
+			Swal.fire({
+				position: "top-center",
+				icon: "success",
+				title: "Item add to wishList",
+				showConfirmButton: false,
+				timer: 1500
+		});
+		})
+	}
    const {trip_title,image1,price,tour_type}=item
     return (
         <div>
@@ -15,7 +30,7 @@ const Card = ({item}) => {
 				<h1 className="text-xl font-semibold font-font-1">{trip_title}</h1>
 			</div>
 			<button type="button" title="Bookmark post" className="flex justify-center items-center">
-				<FaHeart className="text-3xl hover:scale-110 transition hover:text-color-2"></FaHeart>
+				<FaHeart onClick={handleToAdd} className="text-3xl hover:scale-110 transition hover:text-color-2"></FaHeart>
 			</button>
 		</div>
         

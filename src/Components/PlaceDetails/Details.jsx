@@ -54,7 +54,9 @@ const Details = () => {
             
             <div className="mt-20">
                 <h1 className="text-center text-4xl font-font-1 font-extrabold border-b border-gray-300">Book Now</h1>
-                <BookingForm></BookingForm>
+                <BookingForm
+                place={place}
+                ></BookingForm>
             </div>
            </div>
         </div>

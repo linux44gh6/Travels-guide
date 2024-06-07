@@ -9,7 +9,7 @@ const DashboardLayout = () => {
                 <div className="px-5 border-t">
                     <ul className="flex flex-col gap-4 mt-5">
     <li className=""><NavLink to='/dashboard' className={({isActive})=>isActive?'font-semibold text-[#ffbc42]  flex items-center gap-1 ':'font-semibold text-white flex items-center gap-1'}><FaUser className="text-2xl"></FaUser>My Profile</NavLink></li>
-    <li className=""><NavLink to='/' className={({isActive})=>isActive?'font-semibold text-[#ffbc42]  flex items-center gap-1 ':'font-semibold text-white flex items-center gap-1'}><FaBook className="text-2xl"></FaBook>My Bookings</NavLink></li>
+    <li className=""><NavLink to='/dashboard/myBookings' className={({isActive})=>isActive?'font-semibold text-[#ffbc42]  flex items-center gap-1 ':'font-semibold text-white flex items-center gap-1'}><FaBook className="text-2xl"></FaBook>My Bookings</NavLink></li>
     <li className=""><NavLink to='/' className={({isActive})=>isActive?'font-semibold text-[#ffbc42]  flex items-center gap-1 ':'font-semibold text-white flex items-center gap-1'}><FaList className="text-2xl"></FaList>My Wishlist</NavLink></li>
     <li className=""><NavLink to='/' className={({isActive})=>isActive?'font-semibold text-[#ffbc42]  flex items-center gap-1 ':'font-semibold text-white flex items-center gap-1'}><FaRegQuestionCircle className="text-2xl"></FaRegQuestionCircle>Request to Admin</NavLink></li>
                </ul>

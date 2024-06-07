@@ -12,6 +12,7 @@ import GuideDetails from "../Pages/GuideDetails/GuideDetails";
 import DashboardLayout from "../MaiLayOut/DashboardLayout/DashboardLayout";
 import Error from "../Components/ErrorElement/Error";
 import UserProfile from "../Pages/Dashboard/UserProfile/UserProfile";
+import MyBookings from "../Pages/Dashboard/MyBookings/MyBookings";
 
    const router = createBrowserRouter([
   {
@@ -55,6 +56,10 @@ import UserProfile from "../Pages/Dashboard/UserProfile/UserProfile";
         {
           index:true,
           element:<UserProfile></UserProfile>
+        },
+        {
+          path:'/dashboard/myBookings',
+          element:<MyBookings></MyBookings>
         }
     ]
     
