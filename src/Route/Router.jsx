@@ -13,6 +13,7 @@ import DashboardLayout from "../MaiLayOut/DashboardLayout/DashboardLayout";
 import Error from "../Components/ErrorElement/Error";
 import UserProfile from "../Pages/Dashboard/UserProfile/UserProfile";
 import MyBookings from "../Pages/Dashboard/MyBookings/MyBookings";
+import WishList from "../Pages/Dashboard/WishList/WishList";
 
    const router = createBrowserRouter([
   {
@@ -60,6 +61,10 @@ import MyBookings from "../Pages/Dashboard/MyBookings/MyBookings";
         {
           path:'/dashboard/myBookings',
           element:<MyBookings></MyBookings>
+        },
+        {
+          path:'/dashboard/wishList',
+          element:<WishList></WishList>
         }
     ]
     

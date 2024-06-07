@@ -4,10 +4,18 @@ import { GiHiking } from "react-icons/gi";
 import { NavLink } from 'react-router-dom';
 import useAxiosSecure from '../../Hooks/useAxiosSecure';
 import Swal from 'sweetalert2';
+import { useContext } from 'react';
+import { AuthContext } from '../../AuthProvider/AuthProvider';
 const Card = ({item}) => {
+	const {user}=useContext(AuthContext)
+	const email=user?.email
+	const {trip_title,image1,price,tour_type,_id}=item
 	const axiosSecure=useAxiosSecure()
 	const handleToAdd=async()=>{
-		await axiosSecure.post('/wishList',item)
+		const itemInfo={
+			trip_title,price,tour_type,id:_id,email
+		}
+		await axiosSecure.post('/wishList',itemInfo)
 		.then(()=>{
 			Swal.fire({
 				position: "top-center",
@@ -18,7 +26,7 @@ const Card = ({item}) => {
 		});
 		})
 	}
-   const {trip_title,image1,price,tour_type}=item
+   
     return (
         <div>
            <div className="rounded-md shadow-md group dark:bg-gray-50 dark:text-gray-800">
