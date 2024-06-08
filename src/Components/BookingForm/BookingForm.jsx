@@ -1,10 +1,11 @@
-import React, { useContext, useState } from "react";
+/* eslint-disable react/prop-types */
+import { useContext, useState } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { useForm } from 'react-hook-form'
 import useGuide from '../../Hooks/useGuide';
 import { AuthContext } from "../../AuthProvider/AuthProvider";
-import { data } from "autoprefixer";
+
 import useAxiosSecure from '../../Hooks/useAxiosSecure.jsx'
 import Swal from "sweetalert2";
 const BookingForm = ({place}) => {

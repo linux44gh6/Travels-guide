@@ -14,6 +14,9 @@ import Error from "../Components/ErrorElement/Error";
 import UserProfile from "../Pages/Dashboard/UserProfile/UserProfile";
 import MyBookings from "../Pages/Dashboard/MyBookings/MyBookings";
 import WishList from "../Pages/Dashboard/WishList/WishList";
+import AdminProfile from "../Pages/Dashboard/AdminProfile/AdminProfile";
+import AllUser from "../Pages/Dashboard/Alluser/AllUser";
+import AddPackages from "../Pages/Dashboard/AddPackages/AddPackages";
 
    const router = createBrowserRouter([
   {
@@ -55,7 +58,7 @@ import WishList from "../Pages/Dashboard/WishList/WishList";
     errorElement:<Error></Error>,
     children:[
         {
-          index:true,
+          path:'/dashboard/userProfile',
           element:<UserProfile></UserProfile>
         },
         {
@@ -65,6 +68,18 @@ import WishList from "../Pages/Dashboard/WishList/WishList";
         {
           path:'/dashboard/wishList',
           element:<WishList></WishList>
+        },
+        {
+          path:'/dashboard/adminProfile',
+          element:<AdminProfile></AdminProfile>
+        },
+        {
+          path:'/dashboard/user',
+          element:<AllUser></AllUser>
+        },
+        {
+          path:'/dashboard/addPackage',
+          element:<AddPackages></AddPackages>
         }
     ]
     

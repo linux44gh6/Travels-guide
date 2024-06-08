@@ -5,8 +5,9 @@ import { AuthContext } from '../../AuthProvider/AuthProvider';
 import Swal from 'sweetalert2';
 import facebook from '../../assets/100242_facebook_icon-removebg-preview.png'
 import google from '../../assets/google.svg'
+import axios from 'axios';
 const Login = () => {
-    const {singIn}=useContext(AuthContext)
+    const {singIn,googleLogIn}=useContext(AuthContext)
     const handleToLogin=e=>{
         e.preventDefault()
         const form=e.target 
@@ -25,6 +26,26 @@ const Login = () => {
         .catch(err=>{
             console.log(err);
         })
+    }
+    const handleToGoogleLogIn=()=>{
+      googleLogIn()
+      .then(async(res)=>{
+        const userInfo={
+          email:res.user.email,
+          name:res.user.displayName
+        }
+        await axios.post(`${import.meta.env.VITE_BASE_URL}/user`,userInfo)
+        .then((res)=>{
+          console.log(res.data);
+          Swal.fire({
+            position: "top-center",
+            icon: "success",
+            title: "Your work has been saved",
+            showConfirmButton: false,
+            timer: 1500
+          });
+        })
+      })
     }
     return (
         <div>
@@ -59,7 +80,7 @@ const Login = () => {
         </div>
         <div className="divider text-white">OR</div>
         <div className='flex flex- gap-3'>
-            <button className='w-1/2 btn rounded-none '><img className='w-20 ' src={google} alt="" /></button>
+            <button onClick={handleToGoogleLogIn} className='w-1/2 btn rounded-none '><img className='w-20 ' src={google} alt="" /></button>
             <button className=' w-1/2 btn rounded-none'><img className='w-20 -mt-4' src={facebook} alt="" /></button>
         </div>
         <p className='text-white'>New here?<NavLink to='/register' className='text-xl underline'>Create Account</NavLink></p>

@@ -27,9 +27,10 @@ const WishList = () => {
         if (result.isConfirmed) {
             await axiosSecure.delete(`/wishList/${id}`)
             .then(()=>{
+                refetch()
                 Swal.fire({
                     title: "Deleted!",
-                    text: "Your file has been deleted.",
+                    text: "Your Item has been deleted.",
                     icon: "success"
                   });
             })

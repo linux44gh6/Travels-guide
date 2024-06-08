@@ -1,9 +1,11 @@
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import bg from '../../assets/registerBg.mp4'
 import { useContext } from 'react';
 import { AuthContext } from '../../AuthProvider/AuthProvider';
 import Swal from 'sweetalert2';
+import axios from 'axios';
 const Register = () => {
+  const navigate=useNavigate()
     const {createUser,updateUserProfile,logOut}=useContext(AuthContext)
     const handleToRegister=e=>{
         e.preventDefault()
@@ -12,22 +14,26 @@ const Register = () => {
         const email=form.email.value
         const photoURL=form.url.value
         const password=form.password.value
-    //  const   userInfo={
-    //         name,email,photoURL,password
-    //     }
-
+     const   userInfo={
+            name,email
+        }
         createUser(email,password)
         .then(()=>{
                 updateUserProfile(name,photoURL)
-                .then(()=>{
-                    Swal.fire({
+                .then(async()=>{
+                   await axios.post(`${import.meta.env.VITE_BASE_URL}/user`,userInfo)
+                    .then((res)=>{
+                      console.log(res.data);
+                      Swal.fire({
                         position: "top-center",
                         icon: "success",
                         title: "Your work has been saved",
                         showConfirmButton: false,
                         timer: 1500
                       });
+                    })
                       logOut()
+                      navigate('/login')
                 })
         })
         .catch(err=>{
