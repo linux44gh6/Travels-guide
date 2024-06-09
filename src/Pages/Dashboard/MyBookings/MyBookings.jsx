@@ -11,10 +11,10 @@ const MyBookings = () => {
     }})
     console.log(bookings);
     return (
-        <div>
+        <div className="px-5 mt-10">
              <table className="table">
    
-   <thead className="bg-[#D1a054] text-white text-lg uppercase">
+   <thead className="bg-color-1 text-white text-lg uppercase">
      <tr>
        <th>#</th>
        <th>Place</th>
@@ -28,7 +28,7 @@ const MyBookings = () => {
    </thead>
    <tbody>
        {
-           bookings.map((item,index)=><tr  key={item._id} className=" text-lg font-semibold text-gray-600 mt-5">
+           bookings.map((item,index)=><tr  key={item._id} className="font-semibold text-gray-600 mt-5">
                <td>
                    {index+1}
                </td>
@@ -49,7 +49,7 @@ const MyBookings = () => {
                 <h1>{(item.date).slice(0,10)}</h1>
                </th>
                <th>
-                <h1>status</h1>
+                <h1>{item.status}</h1>
                </th>
                <th>
                 <button className="btn">pay</button>

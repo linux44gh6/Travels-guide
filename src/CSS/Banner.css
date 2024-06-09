@@ -72,4 +72,10 @@
     background-position: center;
   
   }
+
+.tourTypeBG{
+  background-image: url('https://i.ibb.co/ysb4yq1/bgparallax-03-dark.jpg');
+    background-repeat: no-repeat;
+    background-position: center;
+}
   

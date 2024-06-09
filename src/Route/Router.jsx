@@ -17,6 +17,11 @@ import WishList from "../Pages/Dashboard/WishList/WishList";
 import AdminProfile from "../Pages/Dashboard/AdminProfile/AdminProfile";
 import AllUser from "../Pages/Dashboard/Alluser/AllUser";
 import AddPackages from "../Pages/Dashboard/AddPackages/AddPackages";
+import GuideProfile from "../Pages/Dashboard/GuideProfile/GuideProfile";
+import TourType from "../Components/TourType/TourType";
+import TourTypeCard from "../Pages/Home/TourTypeCard";
+import PrivetRoute from "./PrivetRoute";
+import RequestToAdmin from "../Pages/Dashboard/RequestToAdmin/RequestToAdmin";
 
    const router = createBrowserRouter([
   {
@@ -49,12 +54,17 @@ import AddPackages from "../Pages/Dashboard/AddPackages/AddPackages";
         path:'/guideDetails/:id',
         element:<GuideDetails></GuideDetails>,
         loader:({params})=>fetch(`${import.meta.env.VITE_BASE_URL}/guide/${params.id}`)
+      },
+      {
+        path:'/tourPlace/:type',
+        element:<TourTypeCard></TourTypeCard>,
+        loader:({params})=>fetch(`${import.meta.env.VITE_BASE_URL}/place/${params.type}`)
       }
     ]
   },
   {
     path:'/dashboard',
-    element:<DashboardLayout></DashboardLayout>,
+    element:<PrivetRoute><DashboardLayout></DashboardLayout></PrivetRoute>,
     errorElement:<Error></Error>,
     children:[
         {
@@ -80,10 +90,19 @@ import AddPackages from "../Pages/Dashboard/AddPackages/AddPackages";
         {
           path:'/dashboard/addPackage',
           element:<AddPackages></AddPackages>
+        },
+        {
+          path:'/dashboard/guideProfile',
+          element:<GuideProfile></GuideProfile>
+        },
+        {
+          path:'/dashboard/request',
+          element:<RequestToAdmin></RequestToAdmin>
         }
     ]
     
-  }
+  },
+  
 ]);
 
 export default router;

@@ -23,11 +23,15 @@ const BookingForm = ({place}) => {
     const photoURL=e.target.photoURL.value
     const price=e.target.price.value
     const guide_name=e.target.guideName.value
+    const guide_email=guide_name.split(',')[1]
+    console.log(guide_email);
     const date=e.target.date.value
     const place=trip_title
+    const status="In Review"
      const bookingInfo={
-      name,email,photoURL,price,guide_name,date,place
+      name,email,photoURL,price,guide_name,date,place,guide_email,status
      }
+     console.log(bookingInfo);
      await axiosSecure.post('/bookings',bookingInfo)
      .then((res)=>{
       Swal.fire({
@@ -51,14 +55,14 @@ const BookingForm = ({place}) => {
           <label className="label">
             <span className="label-text text-xl font-semibold">Tourist_Name</span>
           </label>
-          <input type="text" defaultValue={user?.displayName} disabled {...register('name',{required:true})} placeholder="Tourist Name" className="input input-bordered rounded-none" />
+          <input type="text" defaultValue={user?.displayName} disabled {...register('name',{required:true})} placeholder="Tourist Name" className="input input-bordered rounded-none" required />
          
         </div>
         <div className="form-control w-1/2">
           <label className="label">
             <span className="label-text text-xl font-semibold">Email</span>
           </label>
-          <input type="email" defaultValue={user?.email} disabled {...register('email',{required:true})} placeholder="email" className="input input-bordered rounded-none" />
+          <input type="email" defaultValue={user?.email} disabled {...register('email',{required:true})} placeholder="email" className="input input-bordered rounded-none" required />
          
         </div>
            </div>
@@ -67,13 +71,13 @@ const BookingForm = ({place}) => {
           <label className="label">
             <span className="label-text text-xl font-semibold">Photo_URL</span>
           </label>
-          <input type="url" defaultValue={user?.photoURL} disabled {...register('photoURL',{required:true})} placeholder="Tourist Photo URL" className="input input-bordered rounded-none"/>
+          <input type="url" defaultValue={user?.photoURL} disabled {...register('photoURL',{required:true})} placeholder="Tourist Photo URL" className="input input-bordered rounded-none" required/>
         </div>
         <div className="form-control w-1/2">
           <label className="label">
             <span className="label-text text-xl font-semibold">Price</span>
           </label>
-          <input type="number" {...register('price',{required:true})} placeholder="Tour Cost" className="input input-bordered rounded-none" />
+          <input type="number" {...register('price',{required:true})} placeholder="Tour Cost" className="input input-bordered rounded-none" required />
           
         </div>
            </div>
@@ -82,18 +86,18 @@ const BookingForm = ({place}) => {
           <label className="label">
             <span className="label-text text-xl font-semibold">Date</span>
           </label>
-          <DatePicker {...register('date',{required:true})} className="py-3 pe-48 ps-4  border border-gray-300 rounded-none" selected={startDate} onChange={(date) => setStartDate(date)} />
+          <DatePicker {...register('date',{required:true})} className="py-3 pe-48 ps-4  border border-gray-300 rounded-none" selected={startDate} onChange={(date) => setStartDate(date)} required />
           
         </div>
         <div className="form-control w-1/2">
           <label className="label">
             <span className="label-text text-xl font-semibold">Tourist_Guide</span>
           </label>
-          <select className='py-3 px-8  border border-gray-300 rounded-none' {...register('guideName',{required:true})}>
+          <select required className='py-3 px-8  border border-gray-300 rounded-none' {...register('guideName',{required:true})}>
             {
                 guides.map(item=><option
                     key={item._id}
-                    value={`${item.name}`}>{item.name}</option>)
+                    value={`${item.name},${item.contact_info}`}>{item.name}</option>)
             }
       </select>
         </div>

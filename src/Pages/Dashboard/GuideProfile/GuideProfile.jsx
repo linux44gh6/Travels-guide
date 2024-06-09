@@ -1,10 +1,11 @@
 import { useContext } from "react";
 import { AuthContext } from "../../../AuthProvider/AuthProvider";
 
-const AdminProfile = () => {
+const GuideProfile = () => {
     const {user}=useContext(AuthContext)
     return (
-        <div className="mt-5 ms-5">
+        <div>
+            <div className="mt-5 ms-5">
             <div className="flex gap-10 space-y-1">
                 <div>
                     <img className="w-60 rounded-full" src={user?.photoURL} alt="" />
@@ -22,7 +23,8 @@ const AdminProfile = () => {
                 
             </div>
         </div>
+        </div>
     );
 };
 
-export default AdminProfile;
+export default GuideProfile;

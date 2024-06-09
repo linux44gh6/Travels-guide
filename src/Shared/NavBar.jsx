@@ -25,7 +25,7 @@ const NavBar = () => {
     <li><NavLink to='/' className={({isActive})=>isActive?'font-semibold text-[#ffbc42] ':'font-semibold text-white'}>Contact Us</NavLink></li>
    {user?<div className="dropdown dropdown-bottom dropdown-end">
   <div tabIndex={0} role="button" className=" m-1">
-    <img className=' rounded-full border border-white p-1' src={user?.photoURL} alt="" />
+    <img className=' rounded-full border border-white p-1 w-10' src={user?.photoURL} alt="" />
   </div>
   <ul tabIndex={0} className="dropdown-content z-[1]  menu p-2 shadow bg-color-1 bg-opacity-50 text-white rounded-sm mt-5 w-52  transition ease-in-out duration-900">
     <li><Link to='/dashboard' className='text-lg hover:border border-white font-semibold'>Dashboard</Link></li>
