@@ -22,6 +22,7 @@ import TourType from "../Components/TourType/TourType";
 import TourTypeCard from "../Pages/Home/TourTypeCard";
 import PrivetRoute from "./PrivetRoute";
 import RequestToAdmin from "../Pages/Dashboard/RequestToAdmin/RequestToAdmin";
+import AssaignedTours from "../Pages/Dashboard/MyAssignedTours/AssaignedTours";
 
    const router = createBrowserRouter([
   {
@@ -98,6 +99,10 @@ import RequestToAdmin from "../Pages/Dashboard/RequestToAdmin/RequestToAdmin";
         {
           path:'/dashboard/request',
           element:<RequestToAdmin></RequestToAdmin>
+        },
+        {
+          path:'/dashboard/myAssignTour',
+          element:<AssaignedTours></AssaignedTours>
         }
     ]
     

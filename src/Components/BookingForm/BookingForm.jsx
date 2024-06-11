@@ -97,7 +97,7 @@ const BookingForm = ({place}) => {
             {
                 guides.map(item=><option
                     key={item._id}
-                    value={`${item.name},${item.contact_info}`}>{item.name}</option>)
+                    value={`${item.name},${item.email}`}>{item.name}</option>)
             }
       </select>
         </div>
