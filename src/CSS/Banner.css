@@ -78,4 +78,9 @@
     background-repeat: no-repeat;
     background-position: center;
 }
+.story-bg{
+  background-image: url('https://i.ibb.co/44k9rz8/bgparallax-01-dark.jpg');
+  background-repeat: no-repeat;
+  background-position:right center;
+}
   

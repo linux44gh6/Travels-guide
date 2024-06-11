@@ -23,6 +23,7 @@ import TourTypeCard from "../Pages/Home/TourTypeCard";
 import PrivetRoute from "./PrivetRoute";
 import RequestToAdmin from "../Pages/Dashboard/RequestToAdmin/RequestToAdmin";
 import AssaignedTours from "../Pages/Dashboard/MyAssignedTours/AssaignedTours";
+import StoryDetails from "../Components/StoryDetails/StoryDetails";
 
    const router = createBrowserRouter([
   {
@@ -60,6 +61,10 @@ import AssaignedTours from "../Pages/Dashboard/MyAssignedTours/AssaignedTours";
         path:'/tourPlace/:type',
         element:<TourTypeCard></TourTypeCard>,
         loader:({params})=>fetch(`${import.meta.env.VITE_BASE_URL}/place/${params.type}`)
+      },{
+        path:'/storyDetails/:id',
+        element:<StoryDetails></StoryDetails>,
+        loader:({params})=>fetch(`${import.meta.env.VITE_BASE_URL}/storyDetails/${params.id}`)
       }
     ]
   },

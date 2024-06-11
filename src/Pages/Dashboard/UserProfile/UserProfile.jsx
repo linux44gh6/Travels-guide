@@ -2,11 +2,33 @@ import { useContext } from "react";
 import { AuthContext } from "../../../AuthProvider/AuthProvider";
 import { FaChartBar } from "react-icons/fa";
 import { NavLink } from "react-router-dom";
+import axios from "axios";
+import Swal from "sweetalert2";
 
 const UserProfile = () => {
     const {user}=useContext(AuthContext)
-    const handleToRegister=e=>{
-        
+    const handleToRegister= async e=>{
+        e.preventDefault()
+        const form=e.target
+        const photoURL=form.url.value
+        const place_name=form.name.value
+        const about=form.details.value
+        const userPhoto=user?.photoURL
+        const userName=user?.displayName
+        const story={
+          photoURL,about,userPhoto,userName,place_name
+        }
+        const res=await axios.post(`${import.meta.env.VITE_BASE_URL}/story`,story)
+        .then((res)=>{
+          Swal.fire({
+            position: "top-center",
+            icon: "success",
+            title: "Your work has been saved",
+            showConfirmButton: false,
+            timer: 1500
+          });
+          console.log(res.data)
+        })
     }
     return (
         <div className="px-5 mt-10">
@@ -32,38 +54,30 @@ const UserProfile = () => {
                 <div className="-translate-y-8">
                 <form className="card-body" onSubmit={handleToRegister}>
      <div className="flex gap-3">
-     <div className="form-control w-1/2">
-          <label className="label">
-            <span className="label-text lg:text-xl ">Name</span>
-          </label>
-          <input type="text" name='name' placeholder="Your Name" className="input input-bordered rounded-none" required />
-        </div>
-        <div className="form-control w-1/2">
-          <label className="label">
-            <span className="label-text lg:text-xl ">Email</span>
-          </label>
-          <input type="email" name='email' placeholder="email" className="input input-bordered rounded-none" required />
-        </div>
      </div>
-        <div className="flex gap-3">
+        <div className="gap-3 flex">
         <div className="form-control w-1/2">
           <label className="label">
-            <span className="label-text lg:text-xl ">PhotoURL</span>
+            <span className="label-text lg:text-xl ">Tour Place</span>
+          </label>
+          <input type="text" name='name' placeholder="Your tour place name" className="input input-bordered rounded-none" required />
+        </div>
+        <div className="form-control w-1/2">
+          <label className="label">
+            <span className="label-text lg:text-xl "> Story PhotoURL</span>
           </label>
           <input type="url" name='url' placeholder="Your PhotoURL" className="input input-bordered rounded-none" required />
         </div>
+        </div>
         <div className="form-control w-1/2">
           <label className="label">
-            <span className="label-text lg:text-xl ">Password</span>
+            <span className="label-text lg:text-xl ">Write about your story</span>
           </label>
-          <input type="password" name='password' placeholder="password" className="input input-bordered rounded-none" required />
-        
+          <textarea name="details" placeholder="My Story" className="textarea textarea-bordered textarea-3xl w-full" ></textarea>
         </div>
+        <div className="form-control mt-6 w-full">
+          <button className="btn bg-color-1 text-white hover:text-black rounded-none">Submit</button>
         </div>
-        <div className="form-control mt-6 w-1/2">
-          <button className="btn bg-color-1 text-white hover:text-black rounded-none">Register</button>
-        </div>
-       <p className=' text-white'>Already have Account?<NavLink to='/login' className='text-xl underline'>Login</NavLink></p>
       </form>
                 </div>
             </div>
