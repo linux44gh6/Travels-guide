@@ -1,10 +1,15 @@
 import Swal from "sweetalert2";
 import useLoadUser from "../../../Hooks/useLoadUser";
 import useAxiosSecure from "../../../Hooks/useAxiosSecure";
+import { useState } from "react";
+import { useQuery } from "@tanstack/react-query";
 
 const AllUser = () => {
   const axiosSecure=useAxiosSecure()
-    const [users,refetch]=useLoadUser()
+    const [filter,setFilter]=useState('')
+    console.log(filter)
+   const [users,refetch]=useLoadUser()
+
     const handleToAddAdmin=(id)=>{
       Swal.fire({
         title: "Are you sure?",
@@ -18,6 +23,7 @@ const AllUser = () => {
         if (result.isConfirmed) {
           await axiosSecure.patch(`/user/${id}`)
           .then((res)=>{
+            refetch()
             console.log(res.data);
             Swal.fire({
               title: "promoted!!",
@@ -33,8 +39,14 @@ const AllUser = () => {
     const handleToAccept=(item)=>{
       const name=item.name
       const email=item.email
+const image="https://i.ibb.co/LYSgdQF/caption.jpg"
+const about="Sabina Yasmin is a specialist in educational tours, offering informati…"
+const speciality="Educational Tours"
+const education="B.Ed. in Education, University of Dhaka"
+const skills=''
+const experience="6 years"
       const itemInfo={
-          name,email
+          name,email,image,about,speciality,education,skills,experience
       }
       Swal.fire({
         title: "Are you sure?",
@@ -87,6 +99,22 @@ const AllUser = () => {
     }
     return (
         <div className="px-5 mt-10">
+          <div className='flex flex-col gap-2 w-40 mx-auto mb-5 mt-1'>
+              <label className='text-gray-700 font-bold dark:text-white' htmlFor='category'>
+                FilterBy
+              </label>
+              <select
+              onChange={(e)=>setFilter(e.target.value)}
+              value={filter}
+                name='category'
+                id='category'
+                className='border p-2 rounded-md'
+              >
+                <option value='user'>user</option>
+                <option value='admin'>admin</option>
+                <option value='guide'>guide</option>
+              </select>
+            </div>
           <h1 className="text-4xl font-font-1 font-semibold uppercase">Total user:{users.length}</h1>
              <table className="table">
    <thead className="bg-color-1 text-white text-lg uppercase">
@@ -128,7 +156,7 @@ const AllUser = () => {
                <td>
                 {item.status==='requested'&&<button onClick={()=>handleToAccept(item)} className="btn">{item.status}</button> 
                 }
-                {item.status==='accepted'&&<p className="bg-green-700 text-center p-1 text-white">Accepted</p> 
+                {item.status==='accepted'&&item.role==='guide'&&<p className="bg-green-700 text-center p-1 text-white">Accepted</p> 
                 }
                </td>
              </tr>)

@@ -45,7 +45,7 @@ const Banner = () => {
         </div>
       </Swiper>
            </div>
-      <div className='absolute top-[20%] z-20 left-[20%]' >
+      <div className='absolute top-[35%] z-20 left-[20%]' >
                 <h1 className='text-white mb-2 lg:text-7xl font-extrabold font-font-1 text-center'>Experience The Wonder</h1>
                 <h2 className='lg:text-5xl font-font-2 text-center text-white'>People Don’t Take Trips, Trips Take People</h2>
             </div>

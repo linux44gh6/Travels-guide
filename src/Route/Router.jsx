@@ -24,6 +24,7 @@ import PrivetRoute from "./PrivetRoute";
 import RequestToAdmin from "../Pages/Dashboard/RequestToAdmin/RequestToAdmin";
 import AssaignedTours from "../Pages/Dashboard/MyAssignedTours/AssaignedTours";
 import StoryDetails from "../Components/StoryDetails/StoryDetails";
+import PrivetAdmin from "./PrivetAdmin";
 
    const router = createBrowserRouter([
   {
@@ -41,7 +42,7 @@ import StoryDetails from "../Components/StoryDetails/StoryDetails";
       },
       {
         path:'/details/:id',
-        element:<Details></Details>,
+        element:<PrivetRoute><Details></Details></PrivetRoute>,
         loader:({params})=>fetch(`${import.meta.env.VITE_BASE_URL}/places/${params.id}`)
       },
       {
@@ -54,7 +55,7 @@ import StoryDetails from "../Components/StoryDetails/StoryDetails";
       },
       {
         path:'/guideDetails/:id',
-        element:<GuideDetails></GuideDetails>,
+        element:<PrivetRoute><GuideDetails></GuideDetails></PrivetRoute>,
         loader:({params})=>fetch(`${import.meta.env.VITE_BASE_URL}/guide/${params.id}`)
       },
       {
@@ -63,7 +64,7 @@ import StoryDetails from "../Components/StoryDetails/StoryDetails";
         loader:({params})=>fetch(`${import.meta.env.VITE_BASE_URL}/place/${params.type}`)
       },{
         path:'/storyDetails/:id',
-        element:<StoryDetails></StoryDetails>,
+        element:<PrivetRoute><StoryDetails></StoryDetails></PrivetRoute>,
         loader:({params})=>fetch(`${import.meta.env.VITE_BASE_URL}/storyDetails/${params.id}`)
       }
     ]
@@ -87,15 +88,15 @@ import StoryDetails from "../Components/StoryDetails/StoryDetails";
         },
         {
           path:'/dashboard/adminProfile',
-          element:<AdminProfile></AdminProfile>
+          element:<PrivetAdmin><AdminProfile></AdminProfile></PrivetAdmin>
         },
         {
           path:'/dashboard/user',
-          element:<AllUser></AllUser>
+          element:<PrivetAdmin><AllUser></AllUser></PrivetAdmin>
         },
         {
           path:'/dashboard/addPackage',
-          element:<AddPackages></AddPackages>
+          element:<PrivetAdmin><AddPackages></AddPackages></PrivetAdmin>
         },
         {
           path:'/dashboard/guideProfile',

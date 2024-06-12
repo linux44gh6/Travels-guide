@@ -1,4 +1,4 @@
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import bgVideo from '../../assets/3571264-uhd_3840_2160_30fps.mp4'
 import { useContext, useState } from 'react';
 import { AuthContext } from '../../AuthProvider/AuthProvider';
@@ -8,9 +8,11 @@ import google from '../../assets/google.svg'
 import axios from 'axios';
 import { FaEarListen } from 'react-icons/fa6';
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
+import { Helmet } from 'react-helmet';
 const Login = () => {
   const [visible, setVisible] = useState(false)
     const {singIn,googleLogIn}=useContext(AuthContext)
+    const navigate=useNavigate()
     const handleToLogin=e=>{
         e.preventDefault()
         const form=e.target 
@@ -25,6 +27,7 @@ const Login = () => {
                 showConfirmButton: false,
                 timer: 1500
               });
+              navigate('/')
         })
         .catch(err=>{
           Swal.fire({
@@ -45,6 +48,7 @@ const Login = () => {
         }
         await axios.post(`${import.meta.env.VITE_BASE_URL}/user`,userInfo)
         .then((res)=>{
+          navigate('/')
           console.log(res.data);
           Swal.fire({
             position: "top-center",
@@ -58,6 +62,9 @@ const Login = () => {
     }
     return (
         <div>
+           <Helmet>
+            <title>GlobeGazzer|Login</title>
+          </Helmet>
             <div className='relative h-[110vh]'>
             <video src={bgVideo} autoPlay loop muted></video>
             </div>

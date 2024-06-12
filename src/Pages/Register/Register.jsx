@@ -5,6 +5,7 @@ import { AuthContext } from '../../AuthProvider/AuthProvider';
 import Swal from 'sweetalert2';
 import axios from 'axios';
 import { FaEye, FaEyeSlash, FaTeamspeak } from 'react-icons/fa';
+import { Helmet } from 'react-helmet';
 const Register = () => {
   const [visible, setVisible] = useState(false)
   const navigate=useNavigate()
@@ -53,7 +54,7 @@ const Register = () => {
                       Swal.fire({
                         position: "top-center",
                         icon: "success",
-                        title: "Your work has been saved",
+                        title: "Registration successfull",
                         showConfirmButton: false,
                         timer: 1500
                       });
@@ -72,11 +73,20 @@ const Register = () => {
                 })
         })
         .catch(err=>{
-                console.log(err);
+          Swal.fire({
+            position: "top-center",
+            icon: "error",
+            title: `${err.message}`,
+            showConfirmButton: false,
+            timer: 2000
+          });      
         })
     }
     return (
         <div>
+          <Helmet>
+            <title>GlobeGazzer|Register</title>
+          </Helmet>
            <div className='h-[110vh]'>
            <video src={bg} autoPlay loop muted></video>
            </div>
