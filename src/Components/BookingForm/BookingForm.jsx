@@ -5,9 +5,9 @@ import "react-datepicker/dist/react-datepicker.css";
 import { useForm } from 'react-hook-form'
 import useGuide from '../../Hooks/useGuide';
 import { AuthContext } from "../../AuthProvider/AuthProvider";
-
 import useAxiosSecure from '../../Hooks/useAxiosSecure.jsx'
 import Swal from "sweetalert2";
+import Confetti from 'react-confetti'
 const BookingForm = ({place}) => {
   const axiosSecure=useAxiosSecure()
   const {trip_title}=place
@@ -17,6 +17,10 @@ const BookingForm = ({place}) => {
     // eslint-disable-next-line no-unused-vars
     const { register, handleSubmit, formState: { errors } } = useForm();
    const handleToSubmit= async e=>{
+   <Confetti
+   width={100}
+   height={100}
+   ></Confetti>
     e.preventDefault()
     const name=e.target.name.value
     const email=e.target.email.value

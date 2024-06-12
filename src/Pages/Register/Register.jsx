@@ -1,10 +1,12 @@
 import { NavLink, useNavigate } from 'react-router-dom';
 import bg from '../../assets/registerBg.mp4'
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import { AuthContext } from '../../AuthProvider/AuthProvider';
 import Swal from 'sweetalert2';
 import axios from 'axios';
+import { FaEye, FaEyeSlash, FaTeamspeak } from 'react-icons/fa';
 const Register = () => {
+  const [visible, setVisible] = useState(false)
   const navigate=useNavigate()
     const {createUser,updateUserProfile,logOut}=useContext(AuthContext)
     const handleToRegister=e=>{
@@ -14,6 +16,30 @@ const Register = () => {
         const email=form.email.value
         const photoURL=form.url.value
         const password=form.password.value
+        if (password.length < 6) {
+          Swal.fire({
+              icon: "error",
+              title: "Oops...",
+              text: "Password should be at least 6 character",
+          });
+          return
+      }
+      else if (!/[A-Z]/.test(password)) {
+          Swal.fire({
+              icon: "error",
+              title: "Oops...",
+              text: "Password should be at least One Uppercase",
+          });
+          return
+      }
+      else if (!/[a-z]/.test(password)) {
+          Swal.fire({
+              icon: "error",
+              title: "Oops...",
+              text: "Password should be at least One Lowercase",
+          });
+          return
+      }
      const   userInfo={
             name,email
         }
@@ -34,6 +60,15 @@ const Register = () => {
                     })
                       logOut()
                       navigate('/login')
+                })
+                .erorr(err=>{
+                  Swal.fire({
+                    position: "top-center",
+                    icon: "success",
+                    title: `${err.message}`,
+                    showConfirmButton: false,
+                    timer: 1500
+                  });
                 })
         })
         .catch(err=>{
@@ -75,8 +110,10 @@ const Register = () => {
           <label className="label">
             <span className="label-text lg:text-xl text-white">Password</span>
           </label>
-          <input type="password" name='password' placeholder="password" className="input input-bordered rounded-none" required />
-        
+          <input type={visible ? "text" : "password"} name='password' placeholder="password" className="input input-bordered rounded-none" required />
+          {
+                            visible ? <FaEye className="  translate-x-[500px] -translate-y-9 text-2xl" onClick={() => setVisible(!visible)}></FaEye> : <FaEyeSlash className=" translate-x-[500px] -translate-y-9  text-2xl" onClick={() => setVisible(!visible)}></FaEyeSlash>
+                        }
         </div>
         <div className="form-control mt-6">
           <button className="btn bg-color-1 text-white hover:text-black rounded-none">Register</button>

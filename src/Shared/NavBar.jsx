@@ -19,15 +19,17 @@ const NavBar = () => {
   }
     const navOption=<>
     <li><NavLink to='/' className={({isActive})=>isActive?'font-semibold text-[#ffbc42] ':'font-semibold text-white'}>Home</NavLink></li>
-    <li><NavLink to='/' className={({isActive})=>isActive?'font-semibold text-[#ffbc42] ':'font-semibold text-white'}>Community</NavLink></li>
-    <li><NavLink to='/' className={({isActive})=>isActive?'font-semibold text-[#ffbc42] ':'font-semibold text-white'}>Blogs</NavLink></li>
-    <li><NavLink to='/' className={({isActive})=>isActive?'font-semibold text-[#ffbc42] ':'font-semibold text-white'}>About Us</NavLink></li>
-    <li><NavLink to='/' className={({isActive})=>isActive?'font-semibold text-[#ffbc42] ':'font-semibold text-white'}>Contact Us</NavLink></li>
+    <li><NavLink to='/community' className={({isActive})=>isActive?'font-semibold text-[#ffbc42] ':'font-semibold text-white'}>Community</NavLink></li>
+    <li><NavLink to='/blogs' className={({isActive})=>isActive?'font-semibold text-[#ffbc42] ':'font-semibold text-white'}>Blogs</NavLink></li>
+    <li><NavLink to='/about' className={({isActive})=>isActive?'font-semibold text-[#ffbc42] ':'font-semibold text-white'}>About Us</NavLink></li>
+    <li><NavLink to='/contact' className={({isActive})=>isActive?'font-semibold text-[#ffbc42] ':'font-semibold text-white'}>Contact Us</NavLink></li>
    {user?<div className="dropdown dropdown-bottom dropdown-end">
   <div tabIndex={0} role="button" className=" m-1">
     <img className=' rounded-full border border-white p-1 w-10' src={user?.photoURL} alt="" />
   </div>
   <ul tabIndex={0} className="dropdown-content z-[1]  menu p-2 shadow bg-color-1 bg-opacity-50 text-white rounded-sm mt-5 w-52  transition ease-in-out duration-900">
+    <li><p>{user?.displayName}</p></li>
+    <li><p>{user?.email}</p></li>
     <li><Link to='/dashboard' className='text-lg hover:border border-white font-semibold'>Dashboard</Link></li>
     <li><Link className='text-lg hover:border border-white font-semibold' onClick={handleToLogOut}>Log Out</Link></li>
   </ul>

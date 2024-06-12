@@ -1,12 +1,15 @@
 import { NavLink } from 'react-router-dom';
 import bgVideo from '../../assets/3571264-uhd_3840_2160_30fps.mp4'
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import { AuthContext } from '../../AuthProvider/AuthProvider';
 import Swal from 'sweetalert2';
 import facebook from '../../assets/100242_facebook_icon-removebg-preview.png'
 import google from '../../assets/google.svg'
 import axios from 'axios';
+import { FaEarListen } from 'react-icons/fa6';
+import { FaEye, FaEyeSlash } from 'react-icons/fa';
 const Login = () => {
+  const [visible, setVisible] = useState(false)
     const {singIn,googleLogIn}=useContext(AuthContext)
     const handleToLogin=e=>{
         e.preventDefault()
@@ -24,7 +27,13 @@ const Login = () => {
               });
         })
         .catch(err=>{
-            console.log(err);
+          Swal.fire({
+            position: "top-center",
+            icon: "error",
+            title: `${err.message}`,
+            showConfirmButton: false,
+            timer: 1500
+          });
         })
     }
     const handleToGoogleLogIn=()=>{
@@ -70,7 +79,10 @@ const Login = () => {
           <label className="label">
             <span className="label-text lg:text-xl text-white">Password</span>
           </label>
-          <input type="password" name='password' placeholder="password" className="input input-bordered rounded-none" required />
+          <input type={visible ? "text" : "password"} name='password' placeholder="password" className="input input-bordered rounded-none" required />
+          {
+                            visible ? <FaEye className="  translate-x-[500px] -translate-y-9 text-2xl" onClick={() => setVisible(!visible)}></FaEye> : <FaEyeSlash className=" translate-x-[500px] -translate-y-9  text-2xl" onClick={() => setVisible(!visible)}></FaEyeSlash>
+                        }
           <label className="label">
             <a href="#" className="label-text-alt link link-hover text-white">Forgot password?</a>
           </label>
