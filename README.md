@@ -1,8 +1,27 @@
-# React + Vite
+Website Name: GlobeGazzer
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Live Link: https://tourist-guide-2db3b.web.app
 
-Currently, two official plugins are available:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+website features-
+
+1.This is a single Page aplication
+
+2.Auththincation by firebase
+
+3.Having a dashBoard
+
+4.Admin-role,guide-role,and user
+
+5.Admin can handle all user and he can take action like create admin,or create guide
+
+
+
+
+How To use run this file into your local computer-
+
+1.clone this file into your local computer- https://github.com/linux44gh6/Travels-guide.git
+
+2.run this commen- npm install
+
+3.Run it localy- npm run dev 
